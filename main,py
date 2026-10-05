@@ -1,0 +1,40 @@
+from produto import Produto
+from venda import Venda
+
+# Criando produtos
+p1 = Produto("Camiseta", 49.90, 10)
+p2 = Produto("Calça", 120.00, 5)
+p3 = Produto("Boné", 35.00, 3)
+
+# Criando uma venda
+venda = Venda()
+
+# Adicionando itens
+venda.adicionar_item(p1, 2)
+venda.adicionar_item(p2, 1)
+venda.adicionar_item(p3, 5)  # vai falhar (estoque insuficiente)
+
+# Removendo um item
+venda.remover_item(p2)
+
+# Calculando total
+total = venda.calcular_total()
+
+print(f"\nData da venda: {venda.data.strftime('%d/%m/%Y %H:%M')}")
+print(f"Total da venda: R$ {total:.2f}")
+print(f"Estoque restante de {p1.descricao}: {p1.estoque}")
+print(f"Estoque restante de {p2.descricao}: {p2.estoque}")
+print(f"Estoque restante de {p3.descricao}: {p3.estoque}")
+
+saida esperada 
+
+Item adicionado: 2x Camiseta
+Item adicionado: 1x Calça
+Estoque insuficiente para Boné.
+Item removido: Calça
+
+Data da venda: 05/10/2026 14:30
+Total da venda: R$ 99.80
+Estoque restante de Camiseta: 8
+Estoque restante de Calça: 5
+Estoque restante de Boné: 3
